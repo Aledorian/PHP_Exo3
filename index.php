@@ -1,6 +1,26 @@
 <?php
-$coord = array('prenom' => 'Aledorian', 'nom' => 'Legrand', 'tel' => '07/70/45/56/05', 'mail' => 'aledorianlegrand@gmail.com', 'portfolio' => 'http://yamete.com' );
+// $coord = array('prenom' => 'Aledorian', 'nom' => 'Legrand', 'tel' => '07/70/45/56/05', 'mail' => 'aledorianlegrand@gmail.com', 'portfolio' => 'http://yamete.com', 'twitter' => '/Aledorian', 'git' => '/Aledorian', 'facebook' => '/dossierland');
+
+$user = isset($_GET['user']) ? $_GET['user'] : '';
+
+switch ($user) {
+  case 'Aledorian':
+    $coord = array('prenom' => 'Aledorian', 'nom' => 'Legrand', 'tel' => '07/70/45/56/05', 'mail' => 'aledorianlegrand@gmail.com', 'portfolio' => 'http://yamete.com', 'twitter' => '/Aledorian', 'git' => '/Aledorian', 'facebook' => '/dossierland');
+    break;
+  case 'Elizra':
+    $coord = array('prenom' => 'Elizra', 'nom' => 'Uranos', 'tel' => '07/**/**/**/**', 'mail' => 'jenexistepas@gmail.com', 'portfolio' => 'http://nanii.com', 'twitter' => '/fakegirl', 'git' => '/fakegirl', 'facebook' => '/fakegirl');
+    break;
+  case 'Alastasia':
+    $coord = array('prenom' => 'Alastasia', 'nom' => 'Poklonskaya', 'tel' => '01/**/**/**/**', 'mail' => 'GREATRUSSIA@gmail.com', 'portfolio' => 'http://merepatrie.com', 'twitter' => '/Rasputin', 'git' => '/Rasputin', 'facebook' => '/Rasputin');
+    break;
+
+  default:
+  $coord = array('prenom' => 'Aledorian', 'nom' => 'Legrand', 'tel' => '07/70/45/56/05', 'mail' => 'aledorianlegrand@gmail.com', 'portfolio' => 'http://yamete.com', 'twitter' => '/Aledorian', 'git' => '/Aledorian', 'facebook' => '/dossierland');
+    break;
+}
+
  ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -23,7 +43,7 @@ $coord = array('prenom' => 'Aledorian', 'nom' => 'Legrand', 'tel' => '07/70/45/5
 
 
       <!-- Custom CSS -->
-      <link href="css/main.css" rel="stylesheet">
+      <link href="css/style.css" rel="stylesheet">
 
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,10 +56,23 @@ $coord = array('prenom' => 'Aledorian', 'nom' => 'Legrand', 'tel' => '07/70/45/5
 
   <body>
     <div class="container">
+      <div class="row text-center">
+        <button type="button" name="button"><a href="?user=Aledorian">Aledorian</a></button>
+        <button type="button" name="button"><a href="?user=Elizra">Elizra</a></button>
+        <button type="button" name="button"><a href="?user=Alastasia">Alastasia</a></button>
+      </div>
 
       <!-- Recto card -->
       <div class="row">
-        <div class="col-xs-12 col-md-offset-3 col-md-6 recto-card">
+        <div <?php if($user == 'Aledorian') {
+          echo 'class = "col-xs-12 col-md-offset-3 col-md-6 recto-card style1"';
+        }
+        elseif ($user == "Elizra"){
+          echo 'class = "col-xs-12 col-md-offset-3 col-md-6 recto-card style2"';
+        }
+        else{
+          echo 'class = "col-xs-12 col-md-offset-3 col-md-6 recto-card style3"';
+        }?>>
 
           <div class="row">
             <div class="col-md-12 valign">
@@ -53,7 +86,15 @@ $coord = array('prenom' => 'Aledorian', 'nom' => 'Legrand', 'tel' => '07/70/45/5
 
       <!-- Verso card -->
       <div class="row">
-        <div class="col-xs-12 col-md-offset-3 col-md-6 verso-card">
+        <div <?php if($user == 'Aledorian') {
+          echo 'class = "col-xs-12 col-md-offset-3 col-md-6 verso-card style1"';
+        }
+        elseif ($user == "Elizra"){
+          echo 'class = "col-xs-12 col-md-offset-3 col-md-6 verso-card style2"';
+        }
+        else{
+          echo 'class = "col-xs-12 col-md-offset-3 col-md-6 verso-card style3"';
+        }?>>
 
           <div class="row">
             <div class="col-xs-12">
@@ -73,10 +114,10 @@ $coord = array('prenom' => 'Aledorian', 'nom' => 'Legrand', 'tel' => '07/70/45/5
 
             <div class="col-xs-6">
               <ul class="social-network">
-                <li><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></li>
-                <li><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></li>
-                <li><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></li>
-                <li><i class="fa fa-viadeo-square fa-2x" aria-hidden="true"></i></li>
+                <li><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i><?php echo $coord['facebook'];?></li>
+                <li><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i><?php echo $coord['twitter'];?></li>
+                <!-- <li><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></li> -->
+                <li><i class="fa fa-github-square fa-2x" aria-hidden="true"></i><?php echo $coord['git'];?></li>
               </ul>
             </div>
 
